@@ -1,0 +1,182 @@
+/* get rid of white border around background */
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+body{
+    width: 100%;
+    background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
+    background: linear-gradient(to right, #22d686, #24d3d3, #22d686, #24d3d3);
+    background-size: 600% 100%;
+    -webkit-animation: HeroBG 20s ease infinite;
+    animation: HeroBG 20s ease infinite;
+} 
+
+@-webkit-keyframes HeroBG {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes HeroBG {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+#loginContainer * {
+    color: #3b3b3b;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100; /* font thickness*/
+    line-height: 1em; /* font pixels */
+    box-sizing: border-box;
+}
+
+#loginContainer {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 1024px; /* Never greater than 1024px */
+}
+/*  style placeholders browser specific */
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #5f5f5f;
+}
+:-moz-placeholder{ /* Mozilla Firefox 4 to 18 */
+    color: #5f5f5f;
+    opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19 */
+    color: #5f5f5f;
+    opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #5f5f5f;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #5f5f5f;
+}
+
+#inputContainer {
+    width: 450px;
+    padding: 50px;
+    float: left; /* keep everything to the left */
+    border-right: 1px solid #5f5f5f;
+}
+
+/* style the header of the input container */
+#inputContainer h2 {
+    text-align: center;
+    color: #5f5f5f;
+}
+
+/* style all input fields of type text, email, and password */
+#inputContainer input[type="text"],
+#inputContainer input[type="email"] ,
+#inputContainer input[type="password"]  {
+    display: block;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #404040;
+    height: 27px;
+    line-height: 27px;
+    width: 100%;
+}
+
+#inputContainer label {
+    color: #3d3c3c;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+#inputContainer select {
+    height: 3%;
+    width: 20%;
+    font-size: 13px;
+    font-weight: 100;
+    align-content: center;
+    background-color: #e6f9ff;
+}
+
+#inputContainer button {
+    background-color: transparent;
+    border: 1px solid #5f5f5f;
+    border-radius: 250px;
+    color: #5f5f5f;
+    display: block;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 20px auto;
+    height: 41px;
+    width: 100%;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#inputContainer button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.hasAccountText {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Removes the blinking Register form when in Login and page is refreshed
+    vice versa for Login Form */
+#registerForm,
+#loginForm {
+    display: none;
+}
+
+#loginText {
+    padding: 45px;
+    display: table-cell;
+}
+
+#loginText h1 {
+    color: #e6e207;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#loginText h2 {
+    margin: 35px 0;
+}
+
+#loginText ul {
+    padding: 0%;
+}
+
+#loginText li {
+    font-size: 18px;
+    list-style-type: none;
+    padding: 5px 35px;
+    background: url(../images/icons/coconut.png) no-repeat 0 0;
+}
+
+#inputContainer .errorMessage {
+    color: #e62807;
+    font-size: 14px;
+    display: block;
+}
