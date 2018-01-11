@@ -316,3 +316,84 @@ body{
     color: #656565;
     font-weight: 400;
 }
+
+.trackList {
+    padding: 0;
+}
+
+.trackListRow {
+    height: 40px;
+    padding: 15px 10px;
+    list-style-type: none;
+}
+
+.trackListRow span {
+    color: #656565;
+    font-weight: 400;
+}
+
+/* highlight color when hover over tracklist */
+.trackListRow:hover {
+    background-color: #27ecc2;
+}
+
+.trackListRow .trackCount {
+    width: 8%;
+    float: left;
+}
+
+.trackListRow .trackCount img {
+    width: 20px;
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+}
+
+/* the play button is now visible on hover */
+.trackListRow:hover .trackCount img {
+    visibility: visible;
+}
+
+.trackListRow .trackCount span {
+    visibility: visible;
+}
+
+.trackListRow:hover .trackCount span {
+    visibility: hidden;
+}
+
+.trackListRow .trackInfo {
+    width: 75%;
+    float: left;
+}
+
+.trackListRow .trackInfo span {
+    display: block; /* places all data in span inside a block */
+}
+
+.tracklistRow .trackOptions {
+    width: 5%;
+    float: left;
+    text-align: right;
+}
+
+.trackListRow .trackOptions img {
+    width: 15px;
+    visibility: hidden;
+}
+
+.trackListRow:hover .trackOptions img {
+    visibility: visible;
+}
+
+.trackListRow .trackDuration {
+    width: 12%; /* 100 - (75+8) = 12% left */
+    float: left;
+    text-align: right;
+}
+
+.tracklistRow .trackInfo .trackName {
+    color: #404040;
+    font-weight: 500;
+    margin-bottom: 5px; /* space between artist and song in row */
+}
