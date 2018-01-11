@@ -7,12 +7,47 @@ html, body {
 /* style track information */
 * {
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-    color: #ffffff;
+    color: #404040;
+    letter-spacing: 1px; /* handles the space between letters on album titles */
+}
+
+body{
+    font-size: 14px;
+    min-width: 720px; /* This is min width of page when page is resized */
+    background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
+    background: linear-gradient(to right, #22d686, #24d3d3, #22d686, #24d3d3);
+    background-size: 600% 100%;
+    -webkit-animation: HeroBG 20s ease infinite;
+    animation: HeroBG 20s ease infinite;
+} 
+
+@-webkit-keyframes HeroBG {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes HeroBG {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }
 
 #nowPlayingBarContainer {
     width: 100%;
-    background-color: #282828;
+    background-color: #1f1e1e;
     bottom: 0;
     position: fixed;
     min-width: 620px;
@@ -150,7 +185,7 @@ html, body {
 }
 
 #navBarContainer {
-    background-color: #000000;
+    background-color: #161616;
     width: 220px;
     height: 100vh;
     position: fixed;
@@ -199,4 +234,85 @@ html, body {
     right: 0%;
     top: 6px;
     width: 25px;
+}
+
+#mainViewContainer {
+    margin-left: 220px;
+    padding-bottom: 90px;
+    width: calc(100% -220px);
+}
+
+#mainContent {
+    padding: 0 20px;
+}
+
+#albumTitles {
+    color: #404040;
+    font-weight: 500;
+}
+
+#pageHeadingBig {
+    color: #404040;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.gridViewInfo {
+    color: #404040;
+    font-weight: 400;
+    padding: 5px 0;
+    text-align: center;
+    text-overflow: ellipsis; /* ends titles in ... if they are too long to avoid wrapping */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gridViewItem {
+    display: inline-block;
+    margin-right: 20px;
+    width: 30%;
+    max-width: 200px;
+    min-width: 150px; /* as the page gets resized (smaller) the artwork will too */
+    margin-bottom: 20px; /* space after artwork */
+}
+
+.gridViewItem img {
+    width: 100%;
+}
+
+.gridViewItem a {
+    text-decoration: none;
+}
+
+.entityInfo {
+    padding: 40px 0 10px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.entityInfo  .leftSection img {
+    width: 100%;
+}
+
+.entityInfo .leftSection {
+    width: 30%;
+    float: left;
+    max-width: 250px;
+}
+
+.entityInfo .rightSection {
+    width: 70%;
+    float: left;
+    padding: 5px 10px 5px 40px;
+    box-sizing: border-box;
+}
+
+.entityInfo .rightSection h2 {
+    margin-top: 0px;    /* overrides yhe default */
+}
+
+.entityInfo .rightSection p {
+    color: #656565;
+    font-weight: 400;
 }
