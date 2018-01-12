@@ -20,7 +20,15 @@
 
     // handles the track currently being played 
     function setTrack(trackId, newPlaylist, play){
-        audioElement.setTrack("assets/music/Colaars-Haze.mp3");
+        // song will be retrieved via ajax call
+        $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId}, function (data){
+                
+                var track = JSON.parse(data);
+                console.log(track);
+                audioElement.setTrack(track.path);
+                audioElement.play();
+
+        });
 
         if(play == true){
             audioElement.play();
