@@ -1,3 +1,48 @@
+<?php
+    $songQuery = mysqli_query($con, "SELECT id FROM songs ORDER BY RAND() LIMIT 15");
+
+    $resultArray = array();
+
+    while($row = mysqli_fetch_array($songQuery)){
+        array_push($resultArray, $row['id']);
+    }
+
+    $jsonArray = json_encode($resultArray); // to convert into a js array use json
+?>
+
+<script>
+
+    $(document).ready(function() {
+        currentPlaylist = <?php echo $jsonArray; ?>;
+        audioElement = new Audio();
+        setTrack(currentPlaylist[0], currentPlaylist, false);
+    });
+
+    // handles the track currently being played 
+    function setTrack(trackId, newPlaylist, play){
+        audioElement.setTrack("assets/music/Colaars-Haze.mp3");
+
+        if(play == true){
+            audioElement.play();
+        }
+    }
+
+    function playSong() {
+        // hide play button, show pause button
+        $(".controlButton.play").hide();
+        $(".controlButton.pause").show();
+        audioElement.play();
+    }
+
+    function pauseSong() {
+        // hide pause button, show play button
+        $(".controlButton.play").show();
+        $(".controlButton.pause").hide();
+        audioElement.pause();
+    }
+
+</script>
+
 <div id="nowPlayingBarContainer">
     <div id="nowPlayingBar">
     <div id="nowPlayingLeft">
@@ -25,10 +70,10 @@
                     <img src="assets/images/icons/previous.png" alt="Previous">
                 </button>
                 <button class="controlButton play" title="Play button">
-                    <img src="assets/images/icons/play.png" alt="Play">
+                    <img src="assets/images/icons/play.png" alt="Play" onclick="playSong()">
                 </button>
                 <button class="controlButton pause" title="Pause button" style="display: none;">
-                    <img src="assets/images/icons/pause.png" alt="Pause">
+                    <img src="assets/images/icons/pause.png" alt="Pause" onclick="pauseSong()">
                 </button>
                 <button class="controlButton next" title="Next button">
                     <img src="assets/images/icons/next.png" alt="Next">

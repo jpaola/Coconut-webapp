@@ -16,9 +16,22 @@
     <head>
         <title>Coconut</title>
 
+        <!-- stylesheets -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+        <!-- scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- get this link from https://developers.google.com/speed/libraries/-->
+        <script src="assets/js/script.js"></script>
+
     </head>
     <body id="background">
+
+        <script>
+            var audioElement = new Audio();
+            audioElement.setTrack("assets/music/Colaars-Haze.mp3");
+            // audioElement.audio.play();
+        </script>
+
         <div id="mainContainer"> 
             <div id="topContainer">
 
