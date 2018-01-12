@@ -35,6 +35,13 @@
                     $(".artistName span").text(artist.name);
                 });
 
+                // get Album via ajax
+                $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album}, function (data){
+                   // slightly different since we are getting an img instead of span and using 'attr'
+                    var album = JSON.parse(data);
+                    $(".albumLink img").attr("src", album.artworkPath);
+                });
+
                 audioElement.setTrack(track.path);
                 audioElement.play();
         });
@@ -65,7 +72,7 @@
     <div id="nowPlayingLeft">
         <div class="content">
             <span class="albumLink">
-                <img src="https://static1.squarespace.com/static/5303cdc2e4b01fb736d82734/t/59414fc09f74566f36ceac87/1497452482688/screenful_logo_square.png" class="albumArtwork">
+                <img src="" class="albumArtwork">
             </span>
             <div class="trackInfo">
                 <span class="trackName">
