@@ -42,8 +42,8 @@
                     $(".albumLink img").attr("src", album.artworkPath);
                 });
 
-                audioElement.setTrack(track.path);
-                audioElement.play();
+                audioElement.setTrack(track);
+                playSong();
         });
 
         if(play == true){
@@ -52,6 +52,11 @@
     }
 
     function playSong() {
+
+        if(audioElement.audio.currentTime == 0){
+            $.post("includes/handlers/ajax/updatePlays.php", {songId: audioElement.currentlyPlaying.id});
+        }
+
         // hide play button, show pause button
         $(".controlButton.play").hide();
         $(".controlButton.pause").show();
