@@ -24,10 +24,19 @@
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId}, function (data){
                 
                 var track = JSON.parse(data);
-                console.log(track);
+                $(".trackName span").text(track.title); // places the name of the track in the span preceding class="trackName"
+
+                // make a separate ajax call to get the artist name by using the artistId
+                // call goes in here because we are using the track.artist (which returns artist ID) to get the artist name
+                $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist}, function (data){
+                    
+                    //get the artist pertaining to the album currently playing
+                    var artist = JSON.parse(data);
+                    $(".artistName span").text(artist.name);
+                });
+
                 audioElement.setTrack(track.path);
                 audioElement.play();
-
         });
 
         if(play == true){
@@ -60,10 +69,10 @@
             </span>
             <div class="trackInfo">
                 <span class="trackName">
-                    <span>Happy Birthday</span>
+                    <span></span>
                 </span>
                 <span class="artistName">
-                    <span>Paopao</span>
+                    <span></span>
                 </span>
             </div>
         </div>
@@ -110,9 +119,9 @@
             </button>
 
             <div class="progressBar">
-                    <div class="progressBarBackground">
-                        <div class="progress"></div>
-                    </div>
+                <div class="progressBarBackground">
+                    <div class="progress"></div>
+                </div>
             </div>
         </div>
     </div>
