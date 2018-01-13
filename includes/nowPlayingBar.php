@@ -16,7 +16,37 @@
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
+
+
+        $(".playbackBar .progressBar").mousedown(function () {
+            mouseDown = true;
+        });
+
+        $(".playbackBar .progressBar").mousedown(function (e) {
+            if(mouseDown = true){
+                // Set time of the song, depending on position of mouse
+                timeFromOffset(e, this);
+            }
+        });
+
+        $(".playbackBar .progressBar").mouseup(function (e) {
+            timeFromOffset(e, this);
+        });
+
+        // here 'document' is refering to ".playbackBar .progressBar" above
+        $(document).mouseup(function() {
+            // enables you to drag the progress bar if 
+            //you wish to jump to a section in the currently playing song
+            mouseDown = false; 
+        });
     });
+
+    function timeFromOffset(mouse, progressBar) {
+        // here 'this' refers to ".playbackBar .progressBar" from above
+        var percentage = mouse.offsetX / $(progressBar).width() * 100;
+        var seconds = audioElement.audio.duration * (percentage / 100);
+        audioElement.setTime(seconds);
+    }
 
     // handles the track currently being played 
     function setTrack(trackId, newPlaylist, play){
