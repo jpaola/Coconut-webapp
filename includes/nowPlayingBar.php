@@ -78,7 +78,22 @@
         audioElement.setTime(seconds);
     }
 
+    function prevSong() {
+        if(audioElement.audio.currentTime >= 3 || currentIndex == 0){
+            audioElement.setTime(0);
+        }else{
+            currentIndex = currentIndex - 1;
+            setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
+        }
+    }
+
     function nextSong(){
+        if(repeat == true){
+            audioElement.setTime(0);
+            playSong();
+            return;
+        }
+
         if(currentIndex == currentPlaylist.length - 1){
             currentIndex = 0;
         }else{
@@ -88,12 +103,32 @@
         setTrack(trackToPlay, currentPlaylist, true);
     }
 
+    function setRepeat(){
+        repeat = !repeat;
+        var imageName = repeat ? "repeat-active.png" : "repeat.png";
+        $(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
+    }
+
+    function setMute(){
+        audioElement.audio.muted = !audioElement.audio.muted;
+        var imageName = audioElement.audio.muted ? "mute.png" : "volume.png";
+        $(".controlButton.volume img").attr("src", "assets/images/icons/" + imageName);
+    }
+
+    function setShuffle(){
+        shuffle = !shuffle;
+        var imageName = shuffle ? "shuffle-active.png" : "shuffle.png";
+        $(".controlButton.shuffle img").attr("src", "assets/images/icons/" + imageName);
+    }
+
     // handles the track currently being played 
     function setTrack(trackId, newPlaylist, play){
+                
+        currentIndex = currentPlaylist.indexOf(trackId); // point to index of current track
+        pauseSong();
+
         // song will be retrieved via ajax call
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId}, function (data){
-                
-                currentIndex = currentPlaylist.indexOf(trackId); // point to index of current track
 
                 var track = JSON.parse(data);
                 $(".trackName span").text(track.title); // places the name of the track in the span preceding class="trackName"
@@ -164,23 +199,23 @@
     <div id="nowPlayingCenter">
         <div class="content playerControls">
             <div class="buttons">
-                <button class="controlButton shuffle" title="Shuffle button">
+                <button class="controlButton shuffle" title="Shuffle button" onclick="setShuffle()">
                     <img src="assets/images/icons/shuffle.png" alt="Shuffle">
                 </button>
-                <button class="controlButton previous" title="Previous button">
+                <button class="controlButton previous" title="Previous button" onclick="prevSong()">
                     <img src="assets/images/icons/previous.png" alt="Previous">
                 </button>
-                <button class="controlButton play" title="Play button">
-                    <img src="assets/images/icons/play.png" alt="Play" onclick="playSong()">
+                <button class="controlButton play" title="Play button" onclick="playSong()">
+                    <img src="assets/images/icons/play.png" alt="Play">
                 </button>
-                <button class="controlButton pause" title="Pause button" style="display: none;">
-                    <img src="assets/images/icons/pause.png" alt="Pause" onclick="pauseSong()">
+                <button class="controlButton pause" title="Pause button" style="display: none;" onclick="pauseSong()">
+                    <img src="assets/images/icons/pause.png" alt="Pause">
                 </button>
-                <button class="controlButton next" title="Next button">
-                    <img src="assets/images/icons/next.png" alt="Next" onclick="nextSong()">
+                <button class="controlButton next" title="Next button" onclick="nextSong()">
+                    <img src="assets/images/icons/next.png" alt="Next">
                 </button>
                 <button class="controlButton repeat" title="Repeat button">
-                    <img src="assets/images/icons/repeat.png" alt="Repeat">
+                    <img src="assets/images/icons/repeat.png" alt="Repeat" onclick="setRepeat()">
                 </button>
             </div>
 
@@ -198,7 +233,7 @@
     </div>
     <div id="nowPlayingRight">
         <div class="volumeBar">
-            <button class="controlButton volume" title="Volume button">
+            <button class="controlButton volume" title="Volume button" onclick="setMute()">
                 <img src="assets/images/icons/volume.png" alt="Volume">
             </button>
 
