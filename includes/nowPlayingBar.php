@@ -17,8 +17,10 @@
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
+        updateVolumeProgressBar(audioElement.audio); // show current volume (progressBar) when page loads
 
 
+        
         $(".playbackBar .progressBar").mousedown(function () {
             mouseDown = true;
         });
