@@ -19,7 +19,10 @@
         setTrack(currentPlaylist[0], currentPlaylist, false);
         updateVolumeProgressBar(audioElement.audio); // show current volume (progressBar) when page loads
 
-
+        // on any of these events "mousedown touchstart mousedown touchmove" do the following...
+        $("#nowPlayingBarContainer").on("mousedown touchstart mousedown touchmove", function(e){
+            e.preventDefault(); // prevents default behaviour (prevent controls from highlighting on the above events)
+        });
         
         $(".playbackBar .progressBar").mousedown(function () {
             mouseDown = true;
