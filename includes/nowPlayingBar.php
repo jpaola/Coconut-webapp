@@ -14,7 +14,7 @@
 <script>
 
     $(document).ready(function() {
-        currentPlaylist = <?php echo $jsonArray; ?>;
+        currentPlaylist = <?php echo $jsonArray; ?>; // contains the array of id's
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
         updateVolumeProgressBar(audioElement.audio); // show current volume (progressBar) when page loads
@@ -78,11 +78,23 @@
         audioElement.setTime(seconds);
     }
 
+    function nextSong(){
+        if(currentIndex == currentPlaylist.length - 1){
+            currentIndex = 0;
+        }else{
+            currentIndex++;
+        }
+        var trackToPlay = currentPlaylist[currentIndex];
+        setTrack(trackToPlay, currentPlaylist, true);
+    }
+
     // handles the track currently being played 
     function setTrack(trackId, newPlaylist, play){
         // song will be retrieved via ajax call
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId}, function (data){
                 
+                currentIndex = currentPlaylist.indexOf(trackId); // point to index of current track
+
                 var track = JSON.parse(data);
                 $(".trackName span").text(track.title); // places the name of the track in the span preceding class="trackName"
 
@@ -165,7 +177,7 @@
                     <img src="assets/images/icons/pause.png" alt="Pause" onclick="pauseSong()">
                 </button>
                 <button class="controlButton next" title="Next button">
-                    <img src="assets/images/icons/next.png" alt="Next">
+                    <img src="assets/images/icons/next.png" alt="Next" onclick="nextSong()">
                 </button>
                 <button class="controlButton repeat" title="Repeat button">
                     <img src="assets/images/icons/repeat.png" alt="Repeat">

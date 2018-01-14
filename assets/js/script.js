@@ -1,6 +1,7 @@
 var currentlyPlaylist = [];
 var audioElement;
 var mouseDown = false;
+var currentIndex = 0; // used to access song in array of id's
 
 function formatTime(seconds) {
     var time = Math.round(seconds);
