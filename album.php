@@ -40,7 +40,7 @@
                 
                 echo "<li class='tracklistRow'>
                         <div class='trackCount'>
-                            <img class='play' src='assets/images/icons/play-dark.png' onclick='setTrack(" . $albumSong->getId() . ", tempPlaylist, true)'>
+                            <img class='play' src='assets/images/icons/play-dark.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
                             <span class='trackNumber'>$i</span>
                         </div>
 
