@@ -28,8 +28,6 @@
 
         <script>
             var audioElement = new Audio();
-            audioElement.setTrack("assets/music/Colaars-Haze.mp3");
-            // audioElement.audio.play();
         </script>
 
         <div id="mainContainer"> 

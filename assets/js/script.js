@@ -1,6 +1,11 @@
-var currentlyPlaylist = [];
+var currentPlaylist = [];
+var shufflePlaylist = [];
+var tempPlaylist = []; // holds the songs on the current page
 var audioElement;
 var mouseDown = false;
+var currentIndex = 0; // used to access song in array of id's
+var repeat = false;
+var shuffle = false;
 
 function formatTime(seconds) {
     var time = Math.round(seconds);
@@ -21,9 +26,20 @@ function updateTimeProgressBar(audio){
     $(".playbackBar .progress").css("width", progress + "%");
 }
 
+function updateVolumeProgressBar(audio){
+        // manually increase/decrease volume using the volumeBar
+        var volume = audio.volume * 100;
+        $(".volumeBar .progress").css("width", volume + "%");
+}
+
 function Audio() {
     this.currentlyPlaying;
     this.audio = document.createElement('audio');
+
+    // play next song
+    this.audio.addEventListener("ended", function(){
+        nextSong();
+    });
 
     this.audio.addEventListener("canplay", function(){
         // 'this' refers to the object that the event was called on
@@ -32,12 +48,16 @@ function Audio() {
     });
 
     // update the progress bar as song plays
-
     this.audio.addEventListener("timeupdate", function (){
         // if there is a duration..
         if(this.duration) {
             updateTimeProgressBar(this);
         }
+    });
+
+    // manipulate audio volume with the volumeBar
+    this.audio.addEventListener("volumechange", function (){
+        updateVolumeProgressBar(this);
     });
 
     this.setTrack = function(track){
