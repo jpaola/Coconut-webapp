@@ -1,4 +1,6 @@
-<?php include("includes/header.php"); ?>
+<?php 
+include("includes/includedFiles.php");
+?>
 
 <h1 id="pageHeadingBig">You May Like</h1>
 
@@ -21,5 +23,3 @@
         }
     ?>
 </div>
-
-<?php include("includes/footer.php"); ?>
