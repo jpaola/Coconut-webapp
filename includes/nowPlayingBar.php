@@ -14,9 +14,9 @@
 <script>
 
     $(document).ready(function() {
-        currentPlaylist = <?php echo $jsonArray; ?>; // contains the array of id's
+        var newPlaylist = <?php echo $jsonArray; ?>; // contains the array of id's
         audioElement = new Audio();
-        setTrack(currentPlaylist[0], currentPlaylist, false);
+        setTrack(newPlaylist[0], newPlaylist, false);
         updateVolumeProgressBar(audioElement.audio); // show current volume (progressBar) when page loads
 
         // on any of these events "mousedown touchstart mousedown touchmove" do the following...
@@ -99,7 +99,7 @@
         }else{
             currentIndex++;
         }
-        var trackToPlay = currentPlaylist[currentIndex];
+        var trackToPlay = shuffle ? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
         setTrack(trackToPlay, currentPlaylist, true);
     }
 
@@ -124,6 +124,7 @@
         if(shuffle == true){
             // randomize playlist
             shuffleArray(shufflePlaylist);
+            currentIndex = shufflePlaylist.indexOf(audioElement.currentlyPlaying.id);
         }else{
             // shuffle has been deactivated
             // go back to regular playlist
@@ -144,13 +145,17 @@
     function setTrack(trackId, newPlaylist, play){
 
         if(newPlaylist != currentPlaylist){
-            currentPlaylist = newPlaylist;
+            currentPlaylist = newPlaylist; // current and unrandomized playlist
             shufflePlaylist = currentPlaylist.slice();  // currentPlaylist.slice() returns a copy of the currentPlaylist
             shuffleArray(shufflePlaylist);
         }
-                
-        currentIndex = currentPlaylist.indexOf(trackId); // point to index of current track
-        pauseSong();
+        
+        if(shuffle == true){
+            currentIndex = shufflePlaylist.indexOf(trackId);
+        }else{
+            currentIndex = currentPlaylist.indexOf(trackId); // point to index of current track
+        }
+            pauseSong();
 
         // song will be retrieved via ajax call
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId}, function (data){
