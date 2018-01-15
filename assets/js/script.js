@@ -1,5 +1,6 @@
 var currentPlaylist = [];
 var shufflePlaylist = [];
+var tempPlaylist = []; // holds the songs on the current page
 var audioElement;
 var mouseDown = false;
 var currentIndex = 0; // used to access song in array of id's
