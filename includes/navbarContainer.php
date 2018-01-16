@@ -5,9 +5,10 @@
         </span>
         <div class="group">
             <div class="navItem">
-                <a href="search.php" class="navItemLink">Search
+                <span role='link' tabindex= '0' onclick='openPage("search.php")' class="navItemLink">
+                    Search
                     <img src="assets/images/icons/search.png" class="icon" alt="search">
-                </a>
+                </span>
             </div>
         </div>
         <div class="group">
@@ -21,7 +22,7 @@
                 <span role="link" tabindex= "0" onclick="openPage('profile.php')" class="navItemLink">Profile</span>
             </div>
             <div class="navItem">
-                <aspan role="link" tabindex= "0" onclick="openPage('login.php')" class="navItemLink">Logout</span>
+                <span role="link" tabindex= "0" onclick="openPage('login.php')" class="navItemLink">Logout</span>
             </div>
         </div>
     </nav>
