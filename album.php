@@ -1,4 +1,4 @@
-<?php include("includes/header.php"); 
+<?php include("includes/includedFiles.php");
 
     // get album 'id' that is being passed on browser
     if(isset($_GET['id'])){
@@ -67,5 +67,3 @@
         </script>
     </ul>
 </div>
-
-<?php include("includes/footer.php"); ?>

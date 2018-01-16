@@ -1,5 +1,5 @@
 <?php 
-include("includes/includedFiles.php");
+    include("includes/includedFiles.php");
 ?>
 
 <h1 id="pageHeadingBig">You May Like</h1>
@@ -13,12 +13,12 @@ include("includes/includedFiles.php");
 
             // in php the '.' is used to contatinate strings like '+' in Java and C#
             echo "<div class='gridViewItem'>
-                <a href='album.php?id=" . $row['id'] ."'>
+                <span role='link' tabindex= '0' onclick='openPage(\"album.php?id=" . $row['id'] ."\")'>
                     <img src='" . $row['artworkPath'] . "'>
                     <div class='gridViewInfo'>"
                         . $row['title'] .
                     "</div>
-                </a>
+                </span>
             </div>";
         }
     ?>
