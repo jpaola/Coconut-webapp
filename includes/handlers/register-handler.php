@@ -38,8 +38,6 @@ if(isset($_POST['registerButton'])) {
 		$_SESSION['userLoggedIn'] = $username;	// session successfully established
 		header("Location: index.php");
 	}
-
 }
-
 
 ?>
