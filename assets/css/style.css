@@ -397,3 +397,38 @@ body{
     font-weight: 500;
     margin-bottom: 5px; /* space between artist and song in row */
 }
+
+.artistInfo {
+    text-align: center;
+}
+
+.button {
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background-color: transparent;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border: 2px solid #404040;
+    border-radius: 500px;
+    padding: 15px;
+    min-width: 130px;
+}
+
+.button.dark {
+    background-color: #404040;
+}
+
+.borderBottom {
+    border-bottom: 1px solid #404040;
+    margin-bottom: 20px;
+}
+
+.tracklistContainer h2,
+.gridViewContainer h2 {
+    text-align: center;
+}
+
+[role="link"] {
+    cursor: pointer;
+}
