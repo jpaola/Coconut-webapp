@@ -15,7 +15,7 @@
         <div class="artistInfo">
             <h1 class="artistName"><?php echo $artist->getName(); ?></h1>
             <div class="headerButtons">
-                <button class="button">PLAY</button>
+                <button class="button dark">PLAY</button>
             </div>
         </div>
     </div>
