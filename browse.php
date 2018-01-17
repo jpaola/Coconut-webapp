@@ -4,7 +4,7 @@
 
 <h1 id="pageHeadingBig">You May Like</h1>
 
-<div id="albumTitles">
+<div class="gridViewContainer">
     <?php
         $albumQuery = mysqli_query($con, "SELECT * FROM albums ORDER BY RAND() LIMIT 15");
         

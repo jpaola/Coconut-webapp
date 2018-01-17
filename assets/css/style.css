@@ -403,13 +403,13 @@ body{
 }
 
 .button {
-    color: #a0a0a0;
+    color: #ffffff;
     cursor: pointer;
     margin-bottom: 10px;
     background-color: transparent;
     font-weight: 500;
     letter-spacing: 2px;
-    border: 2px solid #a0a0a0;
+    border: 2px solid #404040;
     border-radius: 500px;
     padding: 15px;
     min-width: 130px;
@@ -417,5 +417,18 @@ body{
 
 .button.dark {
     background-color: #404040;
-    border-color: #a0a0a0;
+}
+
+.borderBottom {
+    border-bottom: 1px solid #404040;
+    margin-bottom: 20px;
+}
+
+.tracklistContainer h2,
+.gridViewContainer h2 {
+    text-align: center;
+}
+
+[role="link"] {
+    cursor: pointer;
 }
