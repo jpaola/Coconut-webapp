@@ -13,7 +13,7 @@
         </div>
         <div class="group">
             <div class="navItem">
-                <span role="link" tabindex= "0" onclick="openPage('browser.php')" class="navItemLink">Browse</span>
+                <span role="link" tabindex= "0" onclick="openPage('browse.php')" class="navItemLink">Browse</span>
             </div>
             <div class="navItem">
                 <span role="link" tabindex= "0" onclick="openPage('lobby.php')" class="navItemLink">Lobby</span>
