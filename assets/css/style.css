@@ -14,8 +14,8 @@ html, body {
 body{
     font-size: 14px;
     min-width: 720px; /* This is min width of page when page is resized */
-    background: -webkit-linear-gradient(left, #22d686, #24d3d3, #22d686, #24d3d3);
-    background: linear-gradient(to right, #22d686, #24d3d3, #22d686, #24d3d3);
+    background: -webkit-linear-gradient(left, #1fb7ff, #35F2FE, #0068CC);
+    background: linear-gradient(to right, #1fb7ff, #35F2FE, #0068CC);
     background-size: 600% 100%;
     -webkit-animation: HeroBG 20s ease infinite;
     animation: HeroBG 20s ease infinite;
@@ -334,7 +334,7 @@ body{
 
 /* highlight color when hover over tracklist */
 .trackListRow:hover {
-    background-color: #27ecc2;
+    background-color: #1fb7ff;
 }
 
 .trackListRow .trackCount {
@@ -434,13 +434,13 @@ body{
 }
 
 .searchContainer {
-    background-color: #27ecc2;
+    background-color: #1fb7ff;
     padding: 20px 28px;
 }
 
 .searchContainer h4 {
     margin: 0;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .searchContainer .searchInput {
