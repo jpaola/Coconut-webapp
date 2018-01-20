@@ -18,7 +18,6 @@
     $(".searchInput").focus();
 
     $(function(){
-        var timer;
 
         $(".searchInput").keyup(function() {
             clearTimeout(timer); // clear timer each time user stops typing
@@ -30,6 +29,10 @@
         })
     })
 </script>
+
+<!-- If no search input, display no results as opposed to displaying all albums, songs, and artists on db -->
+<?php if($term == "") exit(); ?>
+
 
 <div class="tracklistContainer borderBottom">
     <h2>SONGS</h2>
@@ -90,4 +93,57 @@
             tempPlaylist = JSON.parse(tempSongIds);
         </script>
     </ul>
+</div>
+
+<div class="artistsContainer borderBottom">
+        <h2>ARTISTS</h2>
+
+        <?php
+            $artistsQuery = mysqli_query($con, "SELECT id FROM artists WHERE name LIKE '$term%' LIMIT 10");
+
+            if(mysqli_num_rows($artistsQuery) == 0){
+                echo "<span class='noResults'>No artists found matching \"" . $term . "\"</span>";
+            }
+
+            while($row = mysqli_fetch_array($artistsQuery)) {
+                $artistFound = new Artist($con, $row['id']);
+
+                echo "<div class='searchResultRow'>
+                        <div class='artistName'>
+                            <span role='link' tabindex='0' onclick='openPage(\"artist.php?id=" . $artistFound->getId() ."\")'>
+                            " 
+                            . $artistFound->getName() .
+                            "
+                            </span>
+                        </div>
+                    </div>";
+            }
+        ?>
+</div>
+
+<div class="gridViewContainer">
+    <h2>ALBUMS</h2>
+
+    <?php
+        $albumQuery = mysqli_query($con, "SELECT * FROM albums WHERE title LIKE '$term%' LIMIT 10");
+
+        
+        if(mysqli_num_rows($albumQuery) == 0){
+            echo "<span class='noResults'>No albums found matching \"" . $term . "\"</span>";
+        }
+
+        // get album data from db
+        while($row = mysqli_fetch_array($albumQuery)){
+
+            // in php the '.' is used to concatinate strings like '+' in Java and C#
+            echo "<div class='gridViewItem'>
+                <span role='link' tabindex= '0' onclick='openPage(\"album.php?id=" . $row['id'] ."\")'>
+                    <img src='" . $row['artworkPath'] . "'>
+                    <div class='gridViewInfo'>"
+                        . $row['title'] .
+                    "</div>
+                </span>
+            </div>";
+        }
+    ?>
 </div>
