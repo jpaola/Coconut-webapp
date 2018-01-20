@@ -7,8 +7,14 @@ var currentIndex = 0; // used to access song in array of id's
 var repeat = false;
 var shuffle = false;
 var userLoggedIn;
+var timer; // moved to this file so we can access the openPage() function
 
 function openPage(url) {
+    
+    if(timer != null){
+        clearTimeout(timer);
+    }
+    
     if(url.indexOf("?") == -1){
         url = url + "?";
     }

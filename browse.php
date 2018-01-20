@@ -11,7 +11,7 @@
         // get album data from db
         while($row = mysqli_fetch_array($albumQuery)){
 
-            // in php the '.' is used to contatinate strings like '+' in Java and C#
+            // in php the '.' is used to concatinate strings like '+' in Java and C#
             echo "<div class='gridViewItem'>
                 <span role='link' tabindex= '0' onclick='openPage(\"album.php?id=" . $row['id'] ."\")'>
                     <img src='" . $row['artworkPath'] . "'>
