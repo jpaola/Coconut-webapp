@@ -416,7 +416,7 @@ body{
 }
 
 .button.dark {
-    background-color: #404040;
+    background-color: #163756;
 }
 
 .borderBottom {
@@ -469,4 +469,13 @@ input:focus {
 .noResults {
     margin: 15px;
     display: block;
+}
+
+.buttonItems .button {
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.playlistsContainer {
+    padding: 10px 0;
 }
