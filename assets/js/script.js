@@ -24,12 +24,18 @@ function openPage(url) {
     history.pushState(null, null, url); // keeps track of the pages (url) on change
 }
 
-function createPlaylist(username){
-    var alert = prompt("Please enter the name of your playlist");
+function createPlaylist(){
+    console.log(userLoggedIn);
+    var popup = prompt("Please enter the name of your playlist");
 
-    if(alert != null){
-        $.post("includes/handlers/ajax/createPlaylist.php", {name: alert, username: username})
-        .done(function(){
+    if(popup != null){
+        $.post("includes/handlers/ajax/createPlaylist.php", {name: popup, username: userLoggedIn})
+        .done(function(error){
+
+            if(error != ""){
+                alert(error);
+                return;
+            }
             openPage("yourMusic.php");
         });
     }
